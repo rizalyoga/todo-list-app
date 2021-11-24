@@ -2,26 +2,30 @@ import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./FrontPage.css";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   return (
     <>
-      <div className="containerLogin">
+      <div className="containerRegister">
         <div>
           <div className="navigation">
-            <Link className="text-decoration-none text-light px-3 pt-2" to="/register">
+            <Link className="register text-decoration-none text-light px-3 pt-2" to="/register">
               Register
             </Link>
-            <Link className="text-decoration-none text-light px-3 pt-2" to="/login">
+            <Link className="login text-decoration-none text-light px-3 pt-2" to="/login">
               Login
             </Link>
           </div>
-          <h1 className="text-center pb-2">Please Login</h1>
+          <h1 className="text-center pb-2">Register</h1>
           <div className="container-form">
             <Form>
+              <Form.Group className="mb-3 " controlId="username">
+                <Form.Label>Username</Form.Label>
+                <Form.Control type="text" placeholder="Enter Username" />
+              </Form.Group>
+
               <Form.Group className="mb-3 " controlId="email">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="password">
@@ -29,7 +33,7 @@ const LoginPage = () => {
                 <Form.Control type="password" placeholder="Password" />
               </Form.Group>
               <Button variant="primary" type="submit">
-                Login
+                Register
               </Button>
             </Form>
           </div>
@@ -39,4 +43,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
