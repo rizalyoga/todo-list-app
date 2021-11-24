@@ -9,7 +9,7 @@
   background-color: rgba(129, 129, 129, 0.7);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
-  display: flex;
+  display: none;
   transition: 1s all !important;
   transition-property: color !important;
   justify-content: center;

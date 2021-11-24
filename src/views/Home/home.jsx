@@ -29,6 +29,7 @@ const Home = () => {
                     <img
                       className="done"
                       src="https://cdn-icons.flaticon.com/png/512/4192/premium/4192658.png?token=exp=1637739061~hmac=d3f4b76aa3a9710fa07560355cd9f398"
+                      alt="icon-done"
                       onClick={() => {
                         console.log("ini-done");
                       }}
@@ -36,6 +37,7 @@ const Home = () => {
                     <img
                       className="edit"
                       src="https://cdn-icons.flaticon.com/png/512/738/premium/738880.png?token=exp=1637753454~hmac=9328be74199fd2fd97250ca8067e1d52"
+                      alt="icon-edit"
                       onClick={() => {
                         console.log("ini-edit");
                       }}
@@ -43,6 +45,7 @@ const Home = () => {
                     <img
                       className="trash"
                       src="https://cdn-icons-png.flaticon.com/512/2602/2602768.png"
+                      alt="icon-trash"
                       onClick={() => {
                         console.log("ini-trash");
                       }}
