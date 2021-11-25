@@ -1,6 +1,7 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/test.png";
+import {VscAccount} from 'react-icons/vsc'
 
 const navigationBar = () => {
   return (
@@ -21,6 +22,11 @@ const navigationBar = () => {
             </Nav>
           </div>
         </Container>
+        <div>
+          <Link to="/register" >
+            <VscAccount style={{width: '40px'}} className="logo my-1 mx-3" />
+          </Link>
+        </div>
       </Navbar>
     </div>
   );

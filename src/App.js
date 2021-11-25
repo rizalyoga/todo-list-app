@@ -8,13 +8,11 @@ import RegisterPage from "./views/Comoponent/RegisterPage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import InputTodo from "./views/Home/InputTodo.jsx";
 
-
-// import { useEffect } from "react";
-// import { useDispatch } from 'react-redux'
-// import allStore from './redux_store/actions/index.js'
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 
-const App = () => {  
+const App = () => {
   return (
     <>
       <BrowserRouter>
@@ -23,7 +21,6 @@ const App = () => {
           <Route path="/listDone/" element={<ListDone />} />
           <Route path="/login/" element={<LoginPage />} />
           <Route path="/register/" element={<RegisterPage />} />
-          <Route path="/inputTodo/" element={<InputTodo />} />
         </Routes>
         {/* <Modal /> */}
       </BrowserRouter>
