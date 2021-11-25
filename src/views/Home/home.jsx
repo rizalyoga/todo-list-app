@@ -9,7 +9,21 @@ import addButton from "../../assets/plus.png";
 import Navbar from "../Comoponent/Navbar.jsx";
 // import { Button } from "bootstrap";
 
+
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from "react-redux";
+
+
 const Home = () => {
+  
+  const navigate = useNavigate();
+  const posts = useSelector(({listPost}) => listPost)
+  //isinya yg ada di reducer
+
+  const goToDetail = (id) => {
+    navigate(`/detail/${id}`)
+  }
+
   return (
     <>
       <Navbar />
@@ -67,7 +81,6 @@ const Home = () => {
           <div className="stickyButton">
             <img src="https://cdn-icons.flaticon.com/png/512/3285/premium/3285752.png?token=exp=1637736620~hmac=776741507fb2db5e5dc48fdcda16e693" alt="sticky-button" />
           </div>
-        </div>
       </Container>
     </>
   );

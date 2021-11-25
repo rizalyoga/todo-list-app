@@ -11,6 +11,16 @@ import rootReducers from "./store/reducers";
 const composeEnhancers = compose;
 const store = createStore(rootReducers, composeEnhancers(applyMiddleware(thunk)));
 
+import { compose, applyMiddleware, createStore } from "redux";
+import { Provider } from "react-redux";
+import thunk from 'redux-thunk'
+import rootReducer from "./redux_store/reducers";
+
+const composeEnhancers = compose
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+
+
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
