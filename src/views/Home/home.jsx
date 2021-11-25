@@ -9,11 +9,17 @@ import addButton from "../../assets/plus.png";
 import Navbar from "../Comoponent/Navbar.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import allStore from "../../store/actions";
-// import { Button } from "bootstrap";
+import { detailTodo } from "../../store/actions/updateTodo";
+import swal from "sweetalert";
+import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const headers = {
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhY2htYWRAbWFpbC5jb20iLCJpYXQiOjE2Mzc3ODk1OTZ9.mPrUErTk9WngtaBgt8p05CbKOr7sDeTexiUHOIECRew",
+  };
+
   const dispatch = useDispatch();
 
   // useSelector untuk mengambil nilai di rootReducer
@@ -23,21 +29,42 @@ const Home = () => {
     dispatch(allStore.fetchListTodo());
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log(listTodo);
-  }, [listTodo]);
-
+  //handle delete Sweet Alert
   const handleDelete = (id) => {
-    console.log("buku dengan id:", id);
+    swal({
+      title: "Kamu Yakin ?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete(`https://peaceful-citadel-71310.herokuapp.com/todo/${id}`, {
+            headers,
+          })
+          .then((response) => {
+            console.log("3.berhasil dapat data", response.data);
+          })
+          .catch(({ error }) => {
+            console.log("3.berhasil dapat data", error.data);
+          });
+
+        console.log("buku dengan id:", id);
+        swal("Data Sukses dihapus", {
+          icon: "success",
+        });
+      } else {
+        swal("Data tidak jadi dihapus");
+      }
+    });
+  };
+
+  //Form Edit
+  const updTodo = (id) => {
+    navigate(`/edit/${id}`);
   };
 
   const navigate = useNavigate();
-
-  //isinya yg ada di reducer
-
-  const goToDetail = (id) => {
-    navigate(`/detail/${id}`);
-  };
 
   return (
     <>
@@ -47,7 +74,7 @@ const Home = () => {
           <p className="text-center">Silahkan Tekan Tombol PLUS (+) untuk Menambahkan Todo</p>
 
           <div className="addButton">
-            <img src={addButton} alt="Add-Todo-Button" id="addButton" />
+            <img src={addButton} alt="Add-Todo-Button" id="addButton" onClick={() => navigate("/CreateForm")} />
           </div>
           <div className="col-container">
             <div className="listUnTodo" id="listUnTodo">
@@ -70,14 +97,7 @@ const Home = () => {
                             console.log("ini-done");
                           }}
                         />
-                        <img
-                          className="edit"
-                          src={edit}
-                          alt="icon-edit"
-                          onClick={() => {
-                            console.log("ini-edit");
-                          }}
-                        />
+                        <img className="edit" src={edit} alt="icon-edit" onClick={(() => dispatch(detailTodo(el)), () => updTodo(el.id))} />
                         <img className="trash" src={bin} alt="icon-trash" onClick={() => handleDelete(el.id)} />
                       </div>
                     </div>
