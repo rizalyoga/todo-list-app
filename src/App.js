@@ -6,7 +6,21 @@ import ListDone from "./views/Home/ListDone.jsx";
 import LoginPage from "./views/Comoponent/LoginPage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
+import { useEffect } from "react";
+import { useDispatch } from 'react-redux'
+import allStore from './redux_store/actions/index.js'
+
+
 const App = () => {
+  const dispatch = useDispatch(); //sama seperti navigate
+
+  useEffect(() => {
+    dispatch(allStore.fetchPost());
+  }, [dispatch]);
+
+
+  
   return (
     <>
       <BrowserRouter>
@@ -14,8 +28,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/listDone/" element={<ListDone />} />
+          {/* <Route path="/detail/:id" element={<Detail />} /> fileRedux*/}
         </Routes>
-        {/* <LoginPage /> */}
+        <LoginPage />
         {/* <Modal /> */}
       </BrowserRouter>
     </>

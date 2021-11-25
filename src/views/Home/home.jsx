@@ -8,7 +8,21 @@ import edit from "../../assets/edit.png";
 import addButton from "../../assets/plus.png";
 // import { Button } from "bootstrap";
 
+
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from "react-redux";
+
+
 const Home = () => {
+  
+  const navigate = useNavigate();
+  const posts = useSelector(({listPost}) => listPost)
+  //isinya yg ada di reducer
+
+  const goToDetail = (id) => {
+    navigate(`/detail/${id}`)
+  }
+
   return (
     <Container>
       <div className="welcome">
@@ -64,6 +78,15 @@ const Home = () => {
         <div className="stickyButton">
           <img src="https://cdn-icons.flaticon.com/png/512/3285/premium/3285752.png?token=exp=1637736620~hmac=776741507fb2db5e5dc48fdcda16e693" alt="sticky-button" />
         </div>
+
+        {posts.map((el,i) => (
+          <div className="mx-5 my-4 border p-3 post-card d-flex justify-content-center" key={i}
+          onClick={() => goToDetail(el.id)}>
+          <h5>{el.title}</h5>
+        </div>
+        ))}
+
+
       </div>
     </Container>
   );
