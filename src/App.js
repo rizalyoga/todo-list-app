@@ -7,20 +7,18 @@ import LoginPage from "./views/Comoponent/LoginPage.jsx";
 import RegisterPage from "./views/Comoponent/RegisterPage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 import { useEffect } from "react";
-import { useDispatch } from 'react-redux'
-import allStore from './redux_store/actions/index.js'
+import { useDispatch } from "react-redux";
+import allStore from "./redux_store/actions/index.js";
 
-
-const App = () => {  
+const App = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/listDone/" element={<ListDone />} />
-        </Routes>
+
           <Route path="/login/" element={<LoginPage />} />
           <Route path="/register/" element={<RegisterPage />} />
         </Routes>
