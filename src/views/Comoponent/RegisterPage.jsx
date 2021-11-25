@@ -1,8 +1,25 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./FrontPage.css";
+import addRegister from "../../store/actions/AddRegister.js";
 
 const RegisterPage = () => {
+  let navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // console.log("1.Masuk  handle Submit");
+    // console.log("username: ", username, "email: ", email, "password: ", password);
+    dispatch(addRegister({ username: username, email: email, password: password }));
+    navigate("/login");
+  };
+
   return (
     <>
       <div className="containerRegister">
@@ -17,20 +34,20 @@ const RegisterPage = () => {
           </div>
           <h1 className="text-center pb-2">Register</h1>
           <div className="container-form">
-            <Form>
+            <Form onSubmit={(event) => handleSubmit(event)}>
               <Form.Group className="mb-3 " controlId="username">
                 <Form.Label>Username</Form.Label>
-                <Form.Control type="text" placeholder="Enter Username" />
+                <Form.Control type="text" name="username" placeholder="Enter Username" value={username} onChange={(event) => setUsername(event.target.value)} />
               </Form.Group>
 
               <Form.Group className="mb-3 " controlId="email">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control type="email" name="email" placeholder="Enter email" value={email} onChange={(event) => setEmail(event.target.value)} />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control type="password" name="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} />
               </Form.Group>
               <Button variant="primary" type="submit">
                 Register
