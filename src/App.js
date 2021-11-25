@@ -1,36 +1,30 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./views/Comoponent/Navbar.jsx";
+// import Navbar from "./views/Comoponent/Navbar.jsx";
 import Home from "./views/Home/home.jsx";
 import ListDone from "./views/Home/ListDone.jsx";
 // import Modal from "./views/Comoponent/Modal.jsx";
 import LoginPage from "./views/Comoponent/LoginPage.jsx";
+import RegisterPage from "./views/Comoponent/RegisterPage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import InputTodo from "./views/Home/InputTodo.jsx";
 
 
-import { useEffect } from "react";
-import { useDispatch } from 'react-redux'
-import allStore from './redux_store/actions/index.js'
+// import { useEffect } from "react";
+// import { useDispatch } from 'react-redux'
+// import allStore from './redux_store/actions/index.js'
 
 
-const App = () => {
-  const dispatch = useDispatch(); //sama seperti navigate
-
-  useEffect(() => {
-    dispatch(allStore.fetchPost());
-  }, [dispatch]);
-
-
-  
+const App = () => {  
   return (
     <>
       <BrowserRouter>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/listDone/" element={<ListDone />} />
-          {/* <Route path="/detail/:id" element={<Detail />} /> fileRedux*/}
+          <Route path="/login/" element={<LoginPage />} />
+          <Route path="/register/" element={<RegisterPage />} />
+          <Route path="/inputTodo/" element={<InputTodo />} />
         </Routes>
-        <LoginPage />
         {/* <Modal /> */}
       </BrowserRouter>
     </>
