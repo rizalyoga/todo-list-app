@@ -6,6 +6,7 @@ import ListDone from "./views/Home/ListDone.jsx";
 import LoginPage from "./views/Comoponent/LoginPage.jsx";
 import RegisterPage from "./views/Comoponent/RegisterPage.jsx";
 import CreateTodo from "./views/Comoponent/Form/Form-Create.jsx";
+import EditTodo from "./views/Comoponent/Form/Form-Edit.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/login/" element={<LoginPage />} />
           <Route path="/register/" element={<RegisterPage />} />
           <Route path="/createForm/" element={<CreateTodo />} />
+          <Route path="/edit/:id" element={<EditTodo />} />
         </Routes>
         {/* <Modal /> */}
       </BrowserRouter>

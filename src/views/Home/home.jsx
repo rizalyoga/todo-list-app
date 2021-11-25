@@ -9,6 +9,7 @@ import addButton from "../../assets/plus.png";
 import Navbar from "../Comoponent/Navbar.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import allStore from "../../store/actions";
+import { detailTodo } from "../../store/actions/updateTodo";
 import swal from "sweetalert";
 import axios from "axios";
 
@@ -58,6 +59,11 @@ const Home = () => {
     });
   };
 
+  //Form Edit
+  const updTodo = (id) => {
+    navigate(`/edit/${id}`);
+  };
+
   const navigate = useNavigate();
 
   return (
@@ -91,14 +97,7 @@ const Home = () => {
                             console.log("ini-done");
                           }}
                         />
-                        <img
-                          className="edit"
-                          src={edit}
-                          alt="icon-edit"
-                          onClick={() => {
-                            console.log("ini-edit");
-                          }}
-                        />
+                        <img className="edit" src={edit} alt="icon-edit" onClick={(() => dispatch(detailTodo(el)), () => updTodo(el.id))} />
                         <img className="trash" src={bin} alt="icon-trash" onClick={() => handleDelete(el.id)} />
                       </div>
                     </div>
