@@ -1,0 +1,29 @@
+.containerCreate,
+.containerUpdate {
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
+    url("https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-form {
+  margin: 10% -30%;
+  border-radius: 5px;
+  width: 150%;
+  background-color: white;
+}
+
+Form {
+  padding: 20px;
+}
+
+.navigation {
+  margin-top: 1%;
+  top: 0;
+  right: 0;
+  position: absolute;
+  font-size: large;
+}

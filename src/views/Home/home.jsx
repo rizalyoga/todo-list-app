@@ -12,6 +12,7 @@ import allStore from "../../store/actions";
 import { detailTodo } from "../../store/actions/updateTodo";
 import swal from "sweetalert";
 import axios from "axios";
+import moment from "moment";
 
 import { useNavigate } from "react-router-dom";
 
@@ -64,6 +65,8 @@ const Home = () => {
     navigate(`/edit/${id}`);
   };
 
+  let now = new Date();
+
   const navigate = useNavigate();
 
   return (
@@ -80,23 +83,16 @@ const Home = () => {
             <div className="listUnTodo" id="listUnTodo">
               <h3>List Todo</h3>
               {listTodo.map((el, index) => (
-                <div className="detailTodo pt-3" key={index}>
+                <div className="detailTodo pt-3" id={`listId${index}`} key={index}>
                   <div className="desc">
                     <h5 className="fw-bold pb-2">{el.title}</h5>
                     <div className="container-list d-flex ">
                       <div className="list">
                         <p className="lh-1">{el.description}</p>
-                        <p className="lh-1">{el.due_date}</p>
+                        <p className="lh-1">{moment(el.due_date, "YYYY-MM-DD hh:mm:ss").format("DD/MM/YYYY")}</p>
                       </div>
                       <div className="button-act d-flex justify-content-center align-item-center">
-                        <img
-                          className="done"
-                          src={check}
-                          alt="icon-done"
-                          onClick={() => {
-                            console.log("ini-done");
-                          }}
-                        />
+                        <img className="done" src={check} alt="icon-done" onClick={() => (document.getElementById(`listId${index}`).style.backgroundColor = "#99CC99")} />
                         <img className="edit" src={edit} alt="icon-edit" onClick={(() => dispatch(detailTodo(el)), () => updTodo(el.id))} />
                         <img className="trash" src={bin} alt="icon-trash" onClick={() => handleDelete(el.id)} />
                       </div>

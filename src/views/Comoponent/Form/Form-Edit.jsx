@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import "../FrontPage.css";
+import "./form.css";
 import { updateTodo, detailTodo } from "../../../store/actions/updateTodo.js";
 
 const UpdateTodo = () => {
@@ -40,7 +40,7 @@ const UpdateTodo = () => {
 
   return (
     <>
-      <div className="containerRegister">
+      <div className="containerUpdate">
         <div>
           <h1 className="text-center pb-2">UPDATE TODO</h1>
           <div className="container-form">
@@ -52,7 +52,7 @@ const UpdateTodo = () => {
 
               <Form.Group className="mb-3 " controlId="description">
                 <Form.Label>Description</Form.Label>
-                <Form.Control type="text" name="description" placeholder="Enter description" value={description} onChange={(event) => setdescription(event.target.value)} />
+                <Form.Control type="text" as="textarea" name="description" placeholder="Enter description" value={description} onChange={(event) => setdescription(event.target.value)} />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="due_date">
