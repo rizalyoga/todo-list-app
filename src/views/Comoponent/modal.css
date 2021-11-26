@@ -7,8 +7,8 @@
   width: 100%;
   z-index: 20;
   background-color: rgba(129, 129, 129, 0.7);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  /* backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px); */
   display: flex;
   transition: 1s all !important;
   transition-property: color !important;

@@ -1,5 +1,6 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import logo from "../../assets/test.png";
 
 const navigationBar = () => {
   return (
@@ -8,7 +9,7 @@ const navigationBar = () => {
         <Container>
           <div className="d-flex justify-content-between">
             <Navbar.Brand href="/">
-              <img src="https://cdn-icons-png.flaticon.com/512/1039/1039328.png" width="30" height="30" className=" align-top" alt="Todo logo" />
+              <img src={logo} width="30" height="30" className=" align-top" alt="Todo logo" />
             </Navbar.Brand>
             <Nav className="me-auto">
               <Link className="text-decoration-none text-light px-3 pt-2" to="/">

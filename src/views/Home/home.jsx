@@ -1,64 +1,114 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import "./style.css";
 import "./responsive.css";
-// import { Button } from "bootstrap";
+import bin from "../../assets/bin.svg";
+import check from "../../assets/check.png";
+import edit from "../../assets/edit.png";
+import addButton from "../../assets/plus.png";
+import Navbar from "../Comoponent/Navbar.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import allStore from "../../store/actions";
+import { detailTodo } from "../../store/actions/updateTodo";
+import swal from "sweetalert";
+import axios from "axios";
+import moment from "moment";
+
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const headers = {
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhY2htYWRAbWFpbC5jb20iLCJpYXQiOjE2Mzc3ODk1OTZ9.mPrUErTk9WngtaBgt8p05CbKOr7sDeTexiUHOIECRew",
+  };
+
+  const dispatch = useDispatch();
+
+  // useSelector untuk mengambil nilai di rootReducer
+  const listTodo = useSelector(({ ListTodoReducer }) => ListTodoReducer);
+
+  useEffect(() => {
+    dispatch(allStore.fetchListTodo());
+  }, [dispatch]);
+
+  //handle delete Sweet Alert
+  const handleDelete = (id) => {
+    swal({
+      title: "Kamu Yakin ?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete(`https://peaceful-citadel-71310.herokuapp.com/todo/${id}`, {
+            headers,
+          })
+          .then((response) => {
+            console.log("3.berhasil dapat data", response.data);
+          })
+          .catch(({ error }) => {
+            console.log("3.berhasil dapat data", error.data);
+          });
+
+        console.log("buku dengan id:", id);
+        swal("Data Sukses dihapus", {
+          icon: "success",
+        });
+      } else {
+        swal("Data tidak jadi dihapus");
+      }
+    });
+  };
+
+  //Form Edit
+  const updTodo = (id) => {
+    navigate(`/edit/${id}`);
+  };
+
+  let now = new Date();
+
+  const navigate = useNavigate();
+
   return (
-    <Container>
-      <div className="welcome">
-        <p className="text-center">Silahkan Tekan Tombol PLUS (+) untuk Menambahkan Todo</p>
+    <>
+      <Navbar />
+      <Container>
+        <div className="welcome">
+          <p className="text-center">Silahkan Tekan Tombol PLUS (+) untuk Menambahkan Todo</p>
 
-        <div className="addButton">
-          <img src="https://cdn-icons.flaticon.com/png/512/3285/premium/3285752.png?token=exp=1637736620~hmac=776741507fb2db5e5dc48fdcda16e693" alt="Add-Todo-Button" id="addButton" />
-        </div>
-
-        <div className="col-container">
-          <div className="listUnTodo" id="listUnTodo">
-            <h3>List Todo</h3>
-            <div className="detailTodo pt-3">
-              <div className="desc">
-                <h5 className="fw-bold pb-2">Design UI Todo-list-App</h5>
-                <div className="container-list d-flex ">
-                  <div className="list">
-                    <p className="lh-1">Mengerjakan UI Todo-list-App untuk prokeck group</p>
-                    <p className="lh-1">24 Novemner 2021</p>
-                  </div>
-                  <div className="button-act d-flex justify-content-center align-item-center">
-                    <img
-                      className="done"
-                      src="https://cdn-icons.flaticon.com/png/512/4192/premium/4192658.png?token=exp=1637739061~hmac=d3f4b76aa3a9710fa07560355cd9f398"
-                      onClick={() => {
-                        console.log("ini-done");
-                      }}
-                    />
-                    <img
-                      className="edit"
-                      src="https://cdn-icons.flaticon.com/png/512/738/premium/738880.png?token=exp=1637753454~hmac=9328be74199fd2fd97250ca8067e1d52"
-                      onClick={() => {
-                        console.log("ini-edit");
-                      }}
-                    />
-                    <img
-                      className="trash"
-                      src="https://cdn-icons-png.flaticon.com/512/2602/2602768.png"
-                      onClick={() => {
-                        console.log("ini-trash");
-                      }}
-                    />
+          <div className="addButton">
+            <img src={addButton} alt="Add-Todo-Button" id="addButton" onClick={() => navigate("/CreateForm")} />
+          </div>
+          <div className="col-container">
+            <div className="listUnTodo" id="listUnTodo">
+              <h3>List Todo</h3>
+              {listTodo.map((el, index) => (
+                <div className="detailTodo pt-3" id={`listId${index}`} key={index}>
+                  <div className="desc">
+                    <h5 className="fw-bold pb-2">{el.title}</h5>
+                    <div className="container-list d-flex ">
+                      <div className="list">
+                        <p className="lh-1">{el.description}</p>
+                        <p className="lh-1">{moment(el.due_date, "YYYY-MM-DD hh:mm:ss").format("DD/MM/YYYY")}</p>
+                      </div>
+                      <div className="button-act d-flex justify-content-center align-item-center">
+                        <img className="done" src={check} alt="icon-done" onClick={() => (document.getElementById(`listId${index}`).style.backgroundColor = "#99CC99")} />
+                        <img className="edit" src={edit} alt="icon-edit" onClick={(() => dispatch(detailTodo(el)), () => updTodo(el.id))} />
+                        <img className="trash" src={bin} alt="icon-trash" onClick={() => handleDelete(el.id)} />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
-        </div>
 
-        <div className="stickyButton">
-          <img src="https://cdn-icons.flaticon.com/png/512/3285/premium/3285752.png?token=exp=1637736620~hmac=776741507fb2db5e5dc48fdcda16e693" alt="sticky-button" />
+          <div className="stickyButton">
+            <img src="https://cdn-icons.flaticon.com/png/512/3285/premium/3285752.png?token=exp=1637736620~hmac=776741507fb2db5e5dc48fdcda16e693" alt="sticky-button" />
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 };
 
