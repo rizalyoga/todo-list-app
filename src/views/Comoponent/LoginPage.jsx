@@ -1,8 +1,10 @@
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./FrontPage.css";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="containerLogin">
@@ -28,7 +30,7 @@ const LoginPage = () => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" onClick={() => navigate("/")}>
                 Login
               </Button>
             </Form>

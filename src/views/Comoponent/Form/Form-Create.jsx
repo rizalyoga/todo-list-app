@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import "../FrontPage.css";
+import "./form.css";
 import addTodo from "../../../store/actions/addTodo.js";
 
 const CreateTodo = () => {
@@ -22,7 +22,7 @@ const CreateTodo = () => {
 
   return (
     <>
-      <div className="containerRegister">
+      <div className="containerCreate">
         <div>
           <h1 className="text-center pb-2">CREATE TODO</h1>
           <div className="container-form">
@@ -34,7 +34,7 @@ const CreateTodo = () => {
 
               <Form.Group className="mb-3 " controlId="description">
                 <Form.Label>Description</Form.Label>
-                <Form.Control type="text" name="description" placeholder="Enter description" value={description} onChange={(event) => setdescription(event.target.value)} />
+                <Form.Control type="text" as="textarea" name="description" placeholder="Enter description" value={description} onChange={(event) => setdescription(event.target.value)} />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="due_date">
