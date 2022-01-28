@@ -5,11 +5,9 @@ export const ADD_TODO = "ADD_TODO";
 
 const addTodo = (data) => {
   const headers = {
-    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhY2htYWRAbWFpbC5jb20iLCJpYXQiOjE2Mzc3ODk1OTZ9.mPrUErTk9WngtaBgt8p05CbKOr7sDeTexiUHOIECRew",
+    token: localStorage.getItem("token"),
   };
   //   let navigate = useNavigate();
-  console.log("2.masuk Action");
-  console.log(data);
   return (dispatch) => {
     // loading;
     dispatch({
@@ -26,8 +24,6 @@ const addTodo = (data) => {
         headers,
       })
       .then((response) => {
-        console.log("3.berhasil dapat data", response.data);
-        console.log("hai", response);
         // console.log(token);
         dispatch({
           type: ADD_TODO,
@@ -39,8 +35,6 @@ const addTodo = (data) => {
         });
       })
       .catch(({ error }) => {
-        console.log("3.berhasil dapat data", error.data);
-        console.log("hai", error);
         dispatch({
           type: ADD_TODO,
           payload: {

@@ -14,8 +14,6 @@ const RegisterPage = () => {
   const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log("1.Masuk  handle Submit");
-    // console.log("username: ", username, "email: ", email, "password: ", password);
     dispatch(addRegister({ username: username, email: email, password: password }));
     navigate("/login");
   };

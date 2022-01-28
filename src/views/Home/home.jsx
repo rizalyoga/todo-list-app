@@ -13,15 +13,17 @@ import { detailTodo } from "../../store/actions/updateTodo";
 import swal from "sweetalert";
 import axios from "axios";
 import moment from "moment";
+import Login from "../Comoponent/LoginPage.jsx";
 
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const headers = {
-    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhY2htYWRAbWFpbC5jb20iLCJpYXQiOjE2Mzc3ODk1OTZ9.mPrUErTk9WngtaBgt8p05CbKOr7sDeTexiUHOIECRew",
+    token: localStorage.getItem("token"),
   };
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // useSelector untuk mengambil nilai di rootReducer
   const listTodo = useSelector(({ ListTodoReducer }) => ListTodoReducer);
@@ -44,7 +46,8 @@ const Home = () => {
             headers,
           })
           .then((response) => {
-            console.log("3.berhasil dapat data", response.data);
+            // console.log("3.berhasil dapat data", response.data);
+            dispatch(allStore.fetchListTodo());
           })
           .catch(({ error }) => {
             console.log("3.berhasil dapat data", error.data);
@@ -65,10 +68,11 @@ const Home = () => {
     navigate(`/edit/${id}`);
   };
 
-  let now = new Date();
+  // let now = new Date();
 
-  const navigate = useNavigate();
-
+  if (!localStorage.token) {
+    return <Login />;
+  }
   return (
     <>
       <Navbar />
