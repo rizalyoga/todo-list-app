@@ -11,18 +11,20 @@ const navigationBar = () => {
             <Navbar.Brand href="/">
               <img src={logo} width="30" height="30" className=" align-top" alt="Todo logo" />
             </Navbar.Brand>
-            <Nav className="me-auto ">
-              <Link className="text-decoration-none text-light px-3" style={{ marginTop: "10px" }} to="/">
-                Home
-              </Link>
-              <Link className="text-decoration-none text-light" style={{ marginTop: "10px" }} to="/listDone">
-                List Done
-              </Link>
-            </Nav>
-            <div className="logout" style={{ float: "end" }}>
-              <p className="text-white px-3" style={{ marginTop: "10px" }}>
-                Logout
-              </p>
+            <div className="menu">
+              <Nav className="me-auto ">
+                <Link className="text-decoration-none text-light px-3" style={{ marginTop: "10px" }} to="/">
+                  Home
+                </Link>
+                <Link className="text-decoration-none text-light" style={{ marginTop: "10px" }} to="/listDone">
+                  List Done
+                </Link>
+              </Nav>
+              <div className="logout" style={{ float: "right" }}>
+                <p className="text-white px-3" style={{ marginTop: "10px" }}>
+                  Logout
+                </p>
+              </div>
             </div>
           </div>
         </Container>
