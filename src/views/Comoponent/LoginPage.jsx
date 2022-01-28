@@ -20,7 +20,7 @@ const LoginPage = () => {
     dispatch(allStore.login({ email, password }));
   };
 
-  if (localStorage) {
+  if (localStorage.token) {
     return <Home />;
   }
 

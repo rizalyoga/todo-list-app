@@ -11,7 +11,6 @@ export const initialState = {
 export const Todo = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_TODO":
-      console.log("4. Masuk Reducer:", action);
       return {
         ...state,
         addTodoResult: action.payload.data,

@@ -2,7 +2,12 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/test.png";
 
-const navigationBar = () => {
+const NavigationBar = () => {
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -11,7 +16,7 @@ const navigationBar = () => {
             <Navbar.Brand href="/">
               <img src={logo} width="30" height="30" className=" align-top" alt="Todo logo" />
             </Navbar.Brand>
-            <div className="menu">
+            <div className="menu d-flex">
               <Nav className="me-auto ">
                 <Link className="text-decoration-none text-light px-3" style={{ marginTop: "10px" }} to="/">
                   Home
@@ -20,7 +25,7 @@ const navigationBar = () => {
                   List Done
                 </Link>
               </Nav>
-              <div className="logout" style={{ float: "right" }}>
+              <div className="logout" style={{ float: "right", cursor: "pointer" }} onClick={() => handleLogout()}>
                 <p className="text-white px-3" style={{ marginTop: "10px" }}>
                   Logout
                 </p>
@@ -33,4 +38,4 @@ const navigationBar = () => {
   );
 };
 
-export default navigationBar;
+export default NavigationBar;

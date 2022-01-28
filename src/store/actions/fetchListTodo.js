@@ -2,7 +2,7 @@ import axios from "axios";
 
 // untuk fetching data dari API
 export const fetchListTodo = () => {
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhY2htYWRAbWFpbC5jb20iLCJpYXQiOjE2Mzc3ODk1OTZ9.mPrUErTk9WngtaBgt8p05CbKOr7sDeTexiUHOIECRew";
+  const token = localStorage.getItem("token");
   //dispatch untuk memanggil setListTodo
   return (dispatch) => {
     axios

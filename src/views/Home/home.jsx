@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const headers = {
-    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJhY2htYWRAbWFpbC5jb20iLCJpYXQiOjE2Mzc3ODk1OTZ9.mPrUErTk9WngtaBgt8p05CbKOr7sDeTexiUHOIECRew",
+    token: localStorage.getItem("token"),
   };
 
   const dispatch = useDispatch();
