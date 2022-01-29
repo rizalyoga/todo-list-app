@@ -14,7 +14,7 @@ import swal from "sweetalert";
 import axios from "axios";
 import moment from "moment";
 import Login from "../Comoponent/LoginPage.jsx";
-
+import { updateTodo } from "../../store/actions/updateTodo.js";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
@@ -27,15 +27,6 @@ const Home = () => {
 
   // useSelector untuk mengambil nilai di rootReducer
   const listTodo = useSelector(({ ListTodoReducer }) => ListTodoReducer);
-
-  // const loading = async () => {
-  //   await listTodo;
-  //   return <p>please wait...</p>;
-  // };
-
-  // useEffect(() => {
-  //   loading();
-  // }, [loading]);
 
   useEffect(() => {
     dispatch(allStore.fetchListTodo());
@@ -61,8 +52,6 @@ const Home = () => {
           .catch(({ error }) => {
             console.log("3.berhasil dapat data", error.data);
           });
-
-        console.log("buku dengan id:", id);
         swal("Data Sukses dihapus", {
           icon: "success",
         });
@@ -72,13 +61,32 @@ const Home = () => {
     });
   };
 
-  //Form Edit
+  //Goes to Form Edit
   const updTodo = (id) => {
     navigate(`/edit/${id}`);
   };
 
-  const done = (id) => {
-    console.log(id);
+  const done = (id, title, description, due_date) => {
+    const data = {
+      id: id,
+      title: title,
+      description: description,
+      due_date: due_date,
+      status: true,
+    };
+    swal({
+      title: "Kamu Yakin ?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        dispatch(updateTodo(data));
+        swal("ok, Todo masuk list done", {
+          icon: "success",
+        });
+      }
+    });
   };
 
   if (!localStorage.token) {
@@ -109,7 +117,7 @@ const Home = () => {
                           <p className="lh-1">{moment(el.due_date, "YYYY-MM-DD hh:mm:ss").format("DD/MM/YYYY")}</p>
                         </div>
                         <div className="button-act d-flex justify-content-center align-item-center">
-                          <img className="done" src={check} alt="icon-done" onClick={() => done(el.id)} />
+                          <img className="done" src={check} alt="icon-done" onClick={() => done(el.id, el.title, el.description, el.due_date)} />
                           <img className="edit" src={edit} alt="icon-edit" onClick={(() => dispatch(detailTodo(el)), () => updTodo(el.id))} />
                           <img className="trash" src={bin} alt="icon-trash" onClick={() => handleDelete(el.id)} />
                         </div>

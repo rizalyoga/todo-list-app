@@ -1,4 +1,5 @@
 import axios from "axios";
+import allStore from "./index";
 
 export const UPDATE_TODO = "UPDATE_TODO";
 export const DETAIL_TODO = "DETAIL_TODO";
@@ -33,6 +34,7 @@ export const updateTodo = (data) => {
             errorMessage: false,
           },
         });
+        dispatch(allStore.fetchListTodo());
       })
       .catch(({ error }) => {
         dispatch({
