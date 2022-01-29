@@ -1,6 +1,6 @@
 import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./FrontPage.css";
 import allStore from "../../store/actions";
@@ -8,6 +8,7 @@ import Home from "../Home/home";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -42,13 +43,18 @@ const LoginPage = () => {
               <Form.Group className="mb-3 " controlId="email">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
-                <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
               </Form.Group>
+              <p>
+                Don't have acount ?{" "}
+                <span style={{ cursor: "pointer", color: "blue" }} onClick={() => navigate("/register")}>
+                  Register here
+                </span>
+              </p>
               <Button variant="primary" type="submit">
                 Login
               </Button>

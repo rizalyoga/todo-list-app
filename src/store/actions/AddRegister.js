@@ -24,6 +24,9 @@ const addRegister = (data) => {
             errorMessage: false,
           },
         });
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 100);
       })
       .catch(({ error }) => {
         dispatch({

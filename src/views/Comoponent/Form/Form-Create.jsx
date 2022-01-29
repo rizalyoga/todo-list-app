@@ -29,17 +29,17 @@ const CreateTodo = () => {
             <Form onSubmit={(event) => handleSubmit(event)}>
               <Form.Group className="mb-3 " controlId="title">
                 <Form.Label>Title</Form.Label>
-                <Form.Control type="text" name="title" placeholder="Enter title" value={title} onChange={(event) => settitle(event.target.value)} autoComplete="off" />
+                <Form.Control type="text" name="title" placeholder="Enter title" value={title} onChange={(event) => settitle(event.target.value)} autoComplete="off" required />
               </Form.Group>
 
               <Form.Group className="mb-3 " controlId="description">
                 <Form.Label>Description</Form.Label>
-                <Form.Control type="text" as="textarea" name="description" placeholder="Enter description" value={description} onChange={(event) => setdescription(event.target.value)} />
+                <Form.Control type="text" as="textarea" name="description" placeholder="Enter description" value={description} onChange={(event) => setdescription(event.target.value)} required />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="due_date">
                 <Form.Label>Date</Form.Label>
-                <Form.Control type="date" name="due_date" placeholder="due_date" value={due_date} onChange={(event) => setdate(event.target.value)} />
+                <Form.Control type="date" name="due_date" placeholder="due_date" value={due_date} onChange={(event) => setdate(event.target.value)} required />
               </Form.Group>
               <Button variant="primary" onClick={() => navigate("/")}>
                 Cancel

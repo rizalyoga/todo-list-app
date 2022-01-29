@@ -15,7 +15,6 @@ const RegisterPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addRegister({ username: username, email: email, password: password }));
-    navigate("/login");
   };
 
   return (
@@ -30,7 +29,7 @@ const RegisterPage = () => {
               Login
             </Link>
           </div>
-          <h1 className="text-center pb-2">Register</h1>
+          <h1 className="text-center">Register</h1>
           <div className="container-form">
             <Form onSubmit={(event) => handleSubmit(event)}>
               <Form.Group className="mb-3 " controlId="username">
@@ -47,6 +46,12 @@ const RegisterPage = () => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" name="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} />
               </Form.Group>
+              <p>
+                Alredy have an acount ?{" "}
+                <span onClick={() => navigate("/login")} style={{ cursor: "pointer", color: "blue" }}>
+                  Login
+                </span>{" "}
+              </p>
               <Button variant="primary" type="submit">
                 Register
               </Button>

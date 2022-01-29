@@ -28,6 +28,15 @@ const Home = () => {
   // useSelector untuk mengambil nilai di rootReducer
   const listTodo = useSelector(({ ListTodoReducer }) => ListTodoReducer);
 
+  // const loading = async () => {
+  //   await listTodo;
+  //   return <p>please wait...</p>;
+  // };
+
+  // useEffect(() => {
+  //   loading();
+  // }, [loading]);
+
   useEffect(() => {
     dispatch(allStore.fetchListTodo());
   }, [dispatch]);
@@ -68,7 +77,9 @@ const Home = () => {
     navigate(`/edit/${id}`);
   };
 
-  // let now = new Date();
+  const done = (id) => {
+    console.log(id);
+  };
 
   if (!localStorage.token) {
     return <Login />;
@@ -86,24 +97,26 @@ const Home = () => {
           <div className="col-container">
             <div className="listUnTodo" id="listUnTodo">
               <h3>List Todo</h3>
-              {listTodo.map((el, index) => (
-                <div className="detailTodo pt-3" id={`listId${index}`} key={index}>
-                  <div className="desc">
-                    <h5 className="fw-bold pb-2">{el.title}</h5>
-                    <div className="container-list d-flex ">
-                      <div className="list">
-                        <p className="lh-1">{el.description}</p>
-                        <p className="lh-1">{moment(el.due_date, "YYYY-MM-DD hh:mm:ss").format("DD/MM/YYYY")}</p>
-                      </div>
-                      <div className="button-act d-flex justify-content-center align-item-center">
-                        <img className="done" src={check} alt="icon-done" onClick={() => (document.getElementById(`listId${index}`).style.backgroundColor = "#99CC99")} />
-                        <img className="edit" src={edit} alt="icon-edit" onClick={(() => dispatch(detailTodo(el)), () => updTodo(el.id))} />
-                        <img className="trash" src={bin} alt="icon-trash" onClick={() => handleDelete(el.id)} />
+              {listTodo
+                .filter((data) => data.status === false)
+                .map((el, index) => (
+                  <div className="detailTodo pt-3" id={`listId${index}`} key={index}>
+                    <div className="desc">
+                      <h5 className="fw-bold pb-2">{el.title}</h5>
+                      <div className="container-list d-flex ">
+                        <div className="list">
+                          <p className="lh-1">{el.description}</p>
+                          <p className="lh-1">{moment(el.due_date, "YYYY-MM-DD hh:mm:ss").format("DD/MM/YYYY")}</p>
+                        </div>
+                        <div className="button-act d-flex justify-content-center align-item-center">
+                          <img className="done" src={check} alt="icon-done" onClick={() => done(el.id)} />
+                          <img className="edit" src={edit} alt="icon-edit" onClick={(() => dispatch(detailTodo(el)), () => updTodo(el.id))} />
+                          <img className="trash" src={bin} alt="icon-trash" onClick={() => handleDelete(el.id)} />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
 

@@ -7,9 +7,7 @@ export const updateTodo = (data) => {
   const headers = {
     token: localStorage.getItem("token"),
   };
-  //   let navigate = useNavigate();
-  console.log("2.masuk Action");
-  console.log(data);
+
   return (dispatch) => {
     // loading;
     dispatch({
