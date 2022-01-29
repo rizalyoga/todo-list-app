@@ -9,7 +9,7 @@ export const Login = (payload) => {
     axios
       .post(`https://peaceful-citadel-71310.herokuapp.com/signin`, payload)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         localStorage.setItem("token", response.data.token);
         swal({ icon: "success", title: response.data.message });
         setTimeout(() => {

@@ -4,6 +4,7 @@ import "./style.css";
 import "./responsive.css";
 import bin from "../../assets/bin.svg";
 import check from "../../assets/check.png";
+import buttonOnScroll from "../../assets/addOnScroll.svg";
 // import edit from "../../assets/edit.png";
 import addButton from "../../assets/plus.png";
 import Navbar from "../Comoponent/Navbar.jsx";
@@ -54,8 +55,6 @@ const ListDone = () => {
         swal("Data Sukses dihapus", {
           icon: "success",
         });
-      } else {
-        swal("Data tidak jadi dihapus");
       }
     });
   };
@@ -81,8 +80,10 @@ const ListDone = () => {
     }).then((willDelete) => {
       if (willDelete) {
         dispatch(updateTodo(data));
-        swal("ok, Todo undone", {
-          icon: "success",
+        swal("Please Wait...", {
+          icon: "warning",
+          timer: 1000,
+          buttons: false,
         });
       }
     });
@@ -104,31 +105,35 @@ const ListDone = () => {
           <div className="col-container">
             <div className="listUnTodo" id="listUnTodo">
               <h3>List Todo</h3>
-              {listTodo
-                .filter((data) => data.status === true)
-                .map((el, index) => (
-                  <div className="detailTodo pt-3" id={`listId${index}`} key={index}>
-                    <div className="desc">
-                      <h5 className="fw-bold pb-2">{el.title}</h5>
-                      <div className="container-list d-flex ">
-                        <div className="list">
-                          <p className="lh-1">{el.description}</p>
-                          <p className="lh-1">{moment(el.due_date, "YYYY-MM-DD hh:mm:ss").format("DD/MM/YYYY")}</p>
-                        </div>
-                        <div className="button-act d-flex justify-content-center align-item-center">
-                          <img className="done" src={check} alt="icon-done" onClick={() => done(el.id, el.title, el.description, el.due_date)} />
-                          {/* <img className="edit" src={edit} alt="icon-edit" onClick={(() => dispatch(detailTodo(el)), () => updTodo(el.id))} /> */}
-                          <img className="trash" src={bin} alt="icon-trash" onClick={() => handleDelete(el.id)} />
+              {listTodo.length <= 0 ? (
+                <p>Please Wait</p>
+              ) : (
+                listTodo
+                  .filter((data) => data.status === true)
+                  .map((el, index) => (
+                    <div className="detailTodo pt-3" id={`listId${index}`} key={index}>
+                      <div className="desc">
+                        <h5 className="fw-bold pb-2">{el.title}</h5>
+                        <div className="container-list d-flex ">
+                          <div className="list">
+                            <p className="lh-1">{el.description}</p>
+                            <p className="lh-1">{moment(el.due_date, "YYYY-MM-DD hh:mm:ss").format("DD/MM/YYYY")}</p>
+                          </div>
+                          <div className="button-act d-flex justify-content-center align-item-center">
+                            <img className="done" src={check} alt="icon-done" onClick={() => done(el.id, el.title, el.description, el.due_date)} />
+                            {/* <img className="edit" src={edit} alt="icon-edit" onClick={(() => dispatch(detailTodo(el)), () => updTodo(el.id))} /> */}
+                            <img className="trash" src={bin} alt="icon-trash" onClick={() => handleDelete(el.id)} />
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+              )}
             </div>
           </div>
 
           <div className="stickyButton">
-            <img src="https://cdn-icons.flaticon.com/png/512/3285/premium/3285752.png?token=exp=1637736620~hmac=776741507fb2db5e5dc48fdcda16e693" alt="sticky-button" />
+            <img src={buttonOnScroll} alt="sticky-button" onClick={() => navigate("/CreateForm")} />
           </div>
         </div>
       </Container>
