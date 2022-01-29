@@ -13,9 +13,9 @@ export const Login = (payload) => {
         // console.log(response.data);
         localStorage.setItem("token", response.data.token);
         swal({ icon: "success", title: response.data.message });
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 1000);
+        // setTimeout(() => {
+        //   window.location.href = "/";
+        // }, 1000);
       })
       .catch((err) => {
         console.log(err.response.data.message);

@@ -55,7 +55,8 @@ Form {
     width: 90%;
   }
 
-  .container-form-login {
+  .container-form-login,
+  .container-form-register {
     width: 90%;
   }
 }

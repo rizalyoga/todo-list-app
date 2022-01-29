@@ -6,7 +6,7 @@ import logo from "../../assets/test.png";
 const NavigationBar = () => {
   const handleLogout = () => {
     localStorage.clear();
-    swal({ icon: "success", title: "Logout Success !!!" });
+    swal({ icon: "success", title: "Logout Success !!!", buttons: false });
     setTimeout(() => {
       window.location.reload();
     }, 1000);
@@ -19,7 +19,7 @@ const NavigationBar = () => {
           <div className="d-flex justify-content-between">
             <div className="logo d-flex justify-content-center align-items-center">
               <Navbar.Brand href="/">
-                <img src={logo} width="40" height="40" className=" align-top" alt="Todo logo" />
+                <img src={logo} width="40" height="40" className=" align-top" alt="Todo logo" className="mt-1" />
               </Navbar.Brand>
             </div>
             <div className="menu d-flex justify-content-center align-items-center">

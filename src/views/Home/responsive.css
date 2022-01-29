@@ -1,6 +1,7 @@
 @media screen and (max-width: 768px) {
   .col-container {
     flex-direction: column;
+    width: 100%;
   }
 
   .listUnTodo,
@@ -61,10 +62,7 @@
 
   .desc {
     padding: 0;
-  }
-
-  .detailTodo {
-    display: inline-block;
+    width: 100%;
   }
 
   .button-act img {

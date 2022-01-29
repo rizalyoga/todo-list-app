@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container } from "react-bootstrap";
+// import { Container } from "react-bootstrap";
 import "./style.css";
 import "./responsive.css";
 /* ---------------------------------- IMAGE --------------------------------- */
@@ -38,7 +38,7 @@ const Home = () => {
   //handle delete Sweet Alert
   const handleDelete = (id) => {
     swal({
-      title: "Kamu Yakin ?",
+      title: "Are you sure want to delete this todo ?",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -55,7 +55,7 @@ const Home = () => {
           .catch(({ error }) => {
             console.log("3.berhasil dapat data", error.data);
           });
-        swal("Data Sukses dihapus", {
+        swal("Todo success deleted !", {
           icon: "success",
         });
       }
@@ -79,7 +79,7 @@ const Home = () => {
       status: true,
     };
     swal({
-      title: "Kamu Yakin ?",
+      title: "Are you sure ?",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -88,7 +88,6 @@ const Home = () => {
         dispatch(updateTodo(data));
         swal("Please Wait...", {
           icon: "warning",
-          timer: 1000,
           buttons: false,
         });
       }
@@ -102,16 +101,17 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <Container>
-        <div className="welcome">
-          <p className="text-center">Silahkan Tekan Tombol PLUS (+) untuk Menambahkan Todo</p>
+      {/* <Container> */}
+      <div className="welcome">
+        <p className="text-center">Silahkan Tekan Tombol PLUS (+) untuk Menambahkan Todo</p>
 
-          <div className="addButton">
-            <img src={addButton} alt="Add-Todo-Button" id="addButton" onClick={() => navigate("/CreateForm")} />
-          </div>
+        <div className="addButton">
+          <img src={addButton} alt="Add-Todo-Button" id="addButton" onClick={() => navigate("/CreateForm")} />
+        </div>
+        <h3 className="pt-3">List Todo</h3>
+        <div className="container-todos">
           <div className="col-container">
             <div className="listUnTodo" id="listUnTodo">
-              <h3>List Todo</h3>
               {listTodo.length === 0 ? (
                 <p>Please Wait...</p>
               ) : (
@@ -120,10 +120,10 @@ const Home = () => {
                   .map((el, index) => (
                     <div className="detailTodo pt-3" id={`listId${index}`} key={index}>
                       <div className="desc">
-                        <h5 className="fw-bold pb-2">{el.title}</h5>
-                        <div className="container-list d-flex ">
+                        <h5 className="fw-bold">{el.title}</h5>
+                        <div className="container-list  ">
                           <div className="list">
-                            <p className="lh-1">{el.description}</p>
+                            <p className="lh-2">{el.description}</p>
                             <p className="lh-1">{moment(el.due_date, "YYYY-MM-DD hh:mm:ss").format("DD/MM/YYYY")}</p>
                           </div>
                           <div className="button-act d-flex justify-content-center align-item-center">
@@ -138,12 +138,13 @@ const Home = () => {
               )}
             </div>
           </div>
-
-          <div className="stickyButton">
-            <img src={buttonOnScroll} alt="sticky-button" onClick={() => navigate("/CreateForm")} />
-          </div>
         </div>
-      </Container>
+
+        <div className="stickyButton">
+          <img src={buttonOnScroll} alt="sticky-button" onClick={() => navigate("/CreateForm")} />
+        </div>
+      </div>
+      {/* </Container> */}
     </>
   );
 };

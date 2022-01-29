@@ -24,35 +24,30 @@ nav {
   padding: 10px;
   align-items: center;
   justify-content: center;
-  background-color: #ffcc66;
-  box-shadow: 0px 5px 5px grey;
+  background-color: #212121;
+  box-shadow: 0px 5px 5px rgb(24, 24, 24);
   position: fixed;
-}
-
-.logo {
-  width: 70px;
-  height: 70px;
-  margin-top: -10px;
 }
 
 body {
   background-color: aliceblue;
 }
 
-.container {
-  margin: auto;
+.container-content {
+  width: 100%;
 }
 
 .welcome {
   text-align: center;
   background-color: aliceblue;
-  padding: 20px;
+  padding: 20px 0px;
   box-sizing: border-box;
   overflow: hidden;
+  width: 100%;
 }
 
 .welcome p {
-  margin-top: 3%;
+  margin: 3% 3%;
 }
 
 .addButton img {
@@ -91,11 +86,17 @@ body {
   right: 2%;
 }
 
+.container-todos {
+  display: flex;
+  justify-content: center;
+}
+
 .col-container {
   display: flex;
   justify-content: center;
   top: 0;
   margin-top: -10px;
+  width: 80%;
 }
 
 .listUnTodo,
@@ -105,7 +106,7 @@ body {
   align-items: center;
   background-color: aliceblue;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
   padding: 20px;
   text-align: center;
 }
@@ -122,14 +123,19 @@ body {
 }
 
 .desc {
+  width: 50%;
   padding-right: 30px;
   padding-left: 10px;
   padding-top: 10px;
 }
 
 .desc p {
-  font-size: 1rem;
+  font-size: 1.2rem;
   overflow: hidden;
+}
+
+.list {
+  width: 100%;
 }
 
 .button-act {
@@ -147,30 +153,3 @@ body {
   cursor: pointer;
   padding-right: 5%;
 }
-
-/* .button-act .done {
-  position: absolute;
-  width: 15%;
-  bottom: 0;
-  right: 0;
-  padding-right: 10%;
-  padding-bottom: 0.2%;
-}
-
-.button-act .edit {
-  position: absolute;
-  width: 12%;
-  bottom: 0;
-  right: 0;
-  padding-right: 7%;
-  padding-bottom: 0.2%;
-}
-
-.button-act .trash {
-  position: absolute;
-  width: 7%;
-  bottom: 0;
-  right: 0;
-  padding-right: 1%;
-  padding-bottom: 1%;
-} */

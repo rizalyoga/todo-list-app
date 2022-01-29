@@ -3,7 +3,6 @@ import swal from "sweetalert";
 import allStore from "./index";
 
 export const UPDATE_TODO = "UPDATE_TODO";
-export const DETAIL_TODO = "DETAIL_TODO";
 
 export const updateTodo = (data) => {
   const headers = {
@@ -41,16 +40,5 @@ export const updateTodo = (data) => {
         });
       })
       .finally(() => dispatch(allStore.setLoading(false)));
-  };
-};
-
-export const detailTodo = (data) => {
-  return (dispatch) => {
-    dispatch({
-      type: DETAIL_TODO,
-      payload: {
-        data: data,
-      },
-    });
   };
 };
