@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./form.css";
 import { updateTodo } from "../../../store/actions/updateTodo.js";
 import Navibar from "../Navbar";
+import allStore from "../../../store/actions/index.js";
 
 const UpdateTodo = () => {
   let navigate = useNavigate();
@@ -33,7 +34,10 @@ const UpdateTodo = () => {
   };
 
   useEffect(() => {
-    // console.log(detailTodos);
+    dispatch(allStore.DetailTodo(id));
+  }, [dispatch, id]);
+
+  useEffect(() => {
     if (detailTodos) {
       settitle(detailTodos.title);
       setdescription(detailTodos.description);
