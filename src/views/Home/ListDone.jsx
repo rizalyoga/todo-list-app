@@ -4,12 +4,11 @@ import "./style.css";
 import "./responsive.css";
 import bin from "../../assets/bin.svg";
 import check from "../../assets/check.png";
-import edit from "../../assets/edit.png";
+// import edit from "../../assets/edit.png";
 import addButton from "../../assets/plus.png";
 import Navbar from "../Comoponent/Navbar.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import allStore from "../../store/actions";
-import { detailTodo } from "../../store/actions/updateTodo";
 import swal from "sweetalert";
 import axios from "axios";
 import moment from "moment";
@@ -62,9 +61,9 @@ const ListDone = () => {
   };
 
   //Goes to Form Edit
-  const updTodo = (id) => {
-    navigate(`/edit/${id}`);
-  };
+  // const updTodo = (id) => {
+  //   navigate(`/edit/${id}`);
+  // };
 
   const done = (id, title, description, due_date) => {
     const data = {
@@ -75,14 +74,14 @@ const ListDone = () => {
       status: false,
     };
     swal({
-      title: "Kamu Yakin ?",
+      title: "Are you sure to undone this todo ?",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
         dispatch(updateTodo(data));
-        swal("ok, Todo masuk list undone", {
+        swal("ok, Todo undone", {
           icon: "success",
         });
       }
@@ -118,7 +117,7 @@ const ListDone = () => {
                         </div>
                         <div className="button-act d-flex justify-content-center align-item-center">
                           <img className="done" src={check} alt="icon-done" onClick={() => done(el.id, el.title, el.description, el.due_date)} />
-                          <img className="edit" src={edit} alt="icon-edit" onClick={(() => dispatch(detailTodo(el)), () => updTodo(el.id))} />
+                          {/* <img className="edit" src={edit} alt="icon-edit" onClick={(() => dispatch(detailTodo(el)), () => updTodo(el.id))} /> */}
                           <img className="trash" src={bin} alt="icon-trash" onClick={() => handleDelete(el.id)} />
                         </div>
                       </div>

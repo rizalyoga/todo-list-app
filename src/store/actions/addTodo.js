@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from "sweetalert";
 // import { useNavigate } from "react-router-dom";
 
 export const ADD_TODO = "ADD_TODO";
@@ -33,6 +34,7 @@ const addTodo = (data) => {
             errorMessage: false,
           },
         });
+        swal({ icon: "success", title: "Todo sucsess add" });
       })
       .catch(({ error }) => {
         dispatch({

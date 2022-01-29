@@ -2,15 +2,17 @@ import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import "./style.css";
 import "./responsive.css";
+/* ---------------------------------- IMAGE --------------------------------- */
 import bin from "../../assets/bin.svg";
 import check from "../../assets/check.png";
 import edit from "../../assets/edit.png";
 import addButton from "../../assets/plus.png";
 import Navbar from "../Comoponent/Navbar.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import allStore from "../../store/actions";
-import { detailTodo } from "../../store/actions/updateTodo";
+/* --------------------------------- Allert --------------------------------- */
 import swal from "sweetalert";
+/* --------------------------------- Actions -------------------------------- */
+import allStore from "../../store/actions";
 import axios from "axios";
 import moment from "moment";
 import Login from "../Comoponent/LoginPage.jsx";
@@ -62,7 +64,8 @@ const Home = () => {
   };
 
   //Goes to Form Edit
-  const updTodo = (id) => {
+  const getDetailTodo = (id) => {
+    dispatch(allStore.DetailTodo(id));
     navigate(`/edit/${id}`);
   };
 
@@ -118,7 +121,7 @@ const Home = () => {
                         </div>
                         <div className="button-act d-flex justify-content-center align-item-center">
                           <img className="done" src={check} alt="icon-done" onClick={() => done(el.id, el.title, el.description, el.due_date)} />
-                          <img className="edit" src={edit} alt="icon-edit" onClick={(() => dispatch(detailTodo(el)), () => updTodo(el.id))} />
+                          <img className="edit" src={edit} alt="icon-edit" onClick={() => getDetailTodo(el.id)} />
                           <img className="trash" src={bin} alt="icon-trash" onClick={() => handleDelete(el.id)} />
                         </div>
                       </div>

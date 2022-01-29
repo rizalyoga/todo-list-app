@@ -4,6 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./form.css";
 import addTodo from "../../../store/actions/addTodo.js";
+import Navibar from "../Navbar.jsx";
 
 const CreateTodo = () => {
   let navigate = useNavigate();
@@ -14,14 +15,18 @@ const CreateTodo = () => {
   const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("1.Masuk  handle Submit");
-    console.log("title: ", title, "description: ", description, "date: ", due_date);
     dispatch(addTodo({ title: title, description: description, due_date: due_date }));
-    navigate("/");
+    // navigate("/");
+    setTimeout(() => {
+      settitle("");
+      setdescription("");
+      setdate("");
+    }, 1000);
   };
 
   return (
     <>
+      <Navibar />
       <div className="containerCreate">
         <div>
           <h1 className="text-center pb-2">CREATE TODO</h1>

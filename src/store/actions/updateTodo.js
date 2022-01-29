@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from "sweetalert";
 import allStore from "./index";
 
 export const UPDATE_TODO = "UPDATE_TODO";
@@ -35,17 +36,17 @@ export const updateTodo = (data) => {
           },
         });
         dispatch(allStore.fetchListTodo());
+        swal({ icon: "success", title: "Todo sucsess to update" });
       })
       .catch(({ error }) => {
         dispatch({
           type: UPDATE_TODO,
           payload: {
             loading: false,
-            data: error.data,
-            errorMessage: error.message,
+            data: error,
+            errorMessage: error,
           },
         });
-        console.log("hai", error);
       });
   };
 };

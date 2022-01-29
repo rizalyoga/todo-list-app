@@ -1,11 +1,15 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 import logo from "../../assets/test.png";
 
 const NavigationBar = () => {
   const handleLogout = () => {
     localStorage.clear();
-    window.location.reload();
+    swal({ icon: "success", buttons: false, title: "Anda telah logout" });
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   return (

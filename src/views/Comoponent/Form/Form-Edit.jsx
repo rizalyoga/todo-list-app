@@ -4,6 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import "./form.css";
 import { updateTodo } from "../../../store/actions/updateTodo.js";
+import Navibar from "../Navbar";
 
 const UpdateTodo = () => {
   let navigate = useNavigate();
@@ -12,7 +13,7 @@ const UpdateTodo = () => {
   const [due_date, setdate] = useState("");
   const [id, setId] = useState("");
 
-  const detailTodoResult = useSelector((state) => state.rootReducers);
+  const detailTodos = useSelector(({ detailTodos }) => detailTodos);
 
   const dispatch = useDispatch();
 
@@ -24,23 +25,25 @@ const UpdateTodo = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("1.Masuk  handle Submit");
-    console.log("title: ", title, "description: ", description, "date: ", due_date);
+    // console.log(id);
+    // console.log(title);
+    // console.log(description);
+    // console.log(due_date);
     dispatch(updateTodo({ id: id, title: title, description: description, due_date: due_date }));
-    navigate("/");
   };
 
   useEffect(() => {
-    if (detailTodoResult) {
-      settitle(detailTodoResult.title);
-      setdescription(detailTodoResult.description);
-      setdate(detailTodoResult.due_date);
-      setId(detailTodoResult.id);
+    // console.log(detailTodos);
+    if (detailTodos) {
+      settitle(detailTodos.title);
+      setdescription(detailTodos.description);
+      setdate(detailTodos.due_date);
     }
-  }, [detailTodoResult, dispatch]);
+  }, [detailTodos]);
 
   return (
     <>
+      <Navibar />
       <div className="containerUpdate">
         <div>
           <h1 className="text-center pb-2">UPDATE TODO</h1>
@@ -64,7 +67,7 @@ const UpdateTodo = () => {
                 Cancel
               </Button>
               <Button className="mx-3" variant="primary" type="submit">
-                Create
+                Update
               </Button>
             </Form>
           </div>

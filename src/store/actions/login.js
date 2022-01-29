@@ -1,5 +1,5 @@
 import axios from "axios";
-// import swal from "sweetalert";
+import swal from "sweetalert";
 // import allStore from "./index";
 
 export const Login = (payload) => {
@@ -11,9 +11,10 @@ export const Login = (payload) => {
       .then((response) => {
         console.log(response.data);
         localStorage.setItem("token", response.data.token);
+        swal({ icon: "success", title: response.data.message });
         setTimeout(() => {
           window.location.href = "/";
-        }, 100);
+        }, 1000);
       })
       .catch((err) => {
         console.log(err.response.data.message);
