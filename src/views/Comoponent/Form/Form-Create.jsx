@@ -28,12 +28,11 @@ const CreateTodo = () => {
     <>
       <Navibar />
       <div className="containerCreate">
-        <div>
-          <h1 className="text-center pb-2">CREATE TODO</h1>
-          <div className="container-form">
+        <div className="container-form">
+          <div>
             <Form onSubmit={(event) => handleSubmit(event)}>
               <Form.Group className="mb-3 " controlId="title">
-                <Form.Label>Title</Form.Label>
+                <Form.Label>Title Todo</Form.Label>
                 <Form.Control type="text" name="title" placeholder="Enter title" value={title} onChange={(event) => settitle(event.target.value)} autoComplete="off" required />
               </Form.Group>
 

@@ -1,11 +1,12 @@
 import axios from "axios";
 import swal from "sweetalert";
-// import allStore from "./index";
+import allStore from "./index";
 
 export const Login = (payload) => {
   localStorage.clear();
 
-  return () => {
+  return (dispatch) => {
+    dispatch(allStore.setLoading(true));
     axios
       .post(`https://peaceful-citadel-71310.herokuapp.com/signin`, payload)
       .then((response) => {
@@ -18,7 +19,8 @@ export const Login = (payload) => {
       })
       .catch((err) => {
         console.log(err.response.data.message);
-      });
+      })
+      .finally(() => dispatch(allStore.setLoading(false)));
   };
 };
 

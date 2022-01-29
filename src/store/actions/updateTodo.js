@@ -12,15 +12,7 @@ export const updateTodo = (data) => {
 
   return (dispatch) => {
     // loading;
-    dispatch({
-      type: UPDATE_TODO,
-      payload: {
-        loading: true,
-        data: false,
-        errorMessage: false,
-      },
-    });
-
+    dispatch(allStore.setLoading(true));
     axios
       .put(`https://peaceful-citadel-71310.herokuapp.com/todo/` + data.id, data, {
         headers,
@@ -47,7 +39,8 @@ export const updateTodo = (data) => {
             errorMessage: error,
           },
         });
-      });
+      })
+      .finally(() => dispatch(allStore.setLoading(false)));
   };
 };
 

@@ -1,7 +1,7 @@
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Spinner } from "react-bootstrap";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./FrontPage.css";
 import allStore from "../../store/actions";
 import Home from "../Home/home";
@@ -9,6 +9,8 @@ import Home from "../Home/home";
 const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const loading = useSelector(({ loading }) => loading);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,7 +30,8 @@ const LoginPage = () => {
   return (
     <>
       <div className="containerLogin">
-        <div>
+        <h1 className="text-center pb-2">Please Login</h1>
+        <div className="container-form-login">
           <div className="navigation">
             <Link className="text-decoration-none text-light px-3 pt-2" to="/register">
               Register
@@ -37,17 +40,16 @@ const LoginPage = () => {
               Login
             </Link>
           </div>
-          <h1 className="text-center pb-2">Please Login</h1>
-          <div className="container-form">
+          <div>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3 " controlId="email">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
+                <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} required />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
               </Form.Group>
               <p>
                 Don't have acount ?{" "}
@@ -55,8 +57,8 @@ const LoginPage = () => {
                   Register here
                 </span>
               </p>
-              <Button variant="primary" type="submit">
-                Login
+              <Button variant="primary" className="login-btn" type="submit">
+                {loading ? <Spinner animation="border" className="sr-only" className="spinner" /> : <>Login</>}
               </Button>
             </Form>
           </div>

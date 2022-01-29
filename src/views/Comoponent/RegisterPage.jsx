@@ -20,7 +20,8 @@ const RegisterPage = () => {
   return (
     <>
       <div className="containerRegister">
-        <div>
+        <h1 className="text-center">Register</h1>
+        <div className="container-form-register">
           <div className="navigation">
             <Link className="register text-decoration-none text-light px-3 pt-2" to="/register">
               Register
@@ -29,22 +30,21 @@ const RegisterPage = () => {
               Login
             </Link>
           </div>
-          <h1 className="text-center">Register</h1>
-          <div className="container-form">
+          <div>
             <Form onSubmit={(event) => handleSubmit(event)}>
               <Form.Group className="mb-3 " controlId="username">
                 <Form.Label>Username</Form.Label>
-                <Form.Control type="text" name="username" placeholder="Enter Username" value={username} onChange={(event) => setUsername(event.target.value)} />
+                <Form.Control type="text" name="username" placeholder="Enter Username" value={username} onChange={(event) => setUsername(event.target.value)} required />
               </Form.Group>
 
               <Form.Group className="mb-3 " controlId="email">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" name="email" placeholder="Enter email" value={email} onChange={(event) => setEmail(event.target.value)} />
+                <Form.Control type="email" name="email" placeholder="Enter email" value={email} onChange={(event) => setEmail(event.target.value)} required />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" name="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} />
+                <Form.Control type="password" name="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
               </Form.Group>
               <p>
                 Alredy have an acount ?{" "}
@@ -52,7 +52,7 @@ const RegisterPage = () => {
                   Login
                 </span>{" "}
               </p>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" className="register-btn" type="submit">
                 Register
               </Button>
             </Form>

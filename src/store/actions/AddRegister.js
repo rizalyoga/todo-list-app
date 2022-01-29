@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from "sweetalert";
 
 export const ADD_REGISTER = "ADD_REGISTER";
 
@@ -24,9 +25,10 @@ const addRegister = (data) => {
             errorMessage: false,
           },
         });
+        swal({ icon: "success", title: '"Register Success"', buttons: false });
         setTimeout(() => {
           window.location.href = "/login";
-        }, 100);
+        }, 1000);
       })
       .catch(({ error }) => {
         dispatch({

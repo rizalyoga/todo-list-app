@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Spinner } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import "./form.css";
 import { updateTodo } from "../../../store/actions/updateTodo.js";
@@ -15,6 +15,7 @@ const UpdateTodo = () => {
   const [id, setId] = useState("");
 
   const detailTodos = useSelector(({ detailTodos }) => detailTodos);
+  const loading = useSelector(({ loading }) => loading);
 
   const dispatch = useDispatch();
 
@@ -49,9 +50,8 @@ const UpdateTodo = () => {
     <>
       <Navibar />
       <div className="containerUpdate">
-        <div>
-          <h1 className="text-center pb-2">UPDATE TODO</h1>
-          <div className="container-form">
+        <div className="container-form">
+          <div>
             <Form onSubmit={(event) => handleSubmit(event)}>
               <Form.Group className="mb-3 " controlId="title">
                 <Form.Label>Title</Form.Label>
@@ -71,7 +71,7 @@ const UpdateTodo = () => {
                 Cancel
               </Button>
               <Button className="mx-3" variant="primary" type="submit">
-                Update
+                {loading ? <Spinner animation="border" className="spinner" /> : <>Update</>}
               </Button>
             </Form>
           </div>

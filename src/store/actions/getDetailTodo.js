@@ -6,6 +6,7 @@ export const DetailTodo = (id) => {
 
   return (dispatch) => {
     console.log(id);
+    dispatch(allStore.setLoading(true));
     axios
       .get(`https://peaceful-citadel-71310.herokuapp.com/todo/${id}`, {
         headers: {
@@ -18,7 +19,8 @@ export const DetailTodo = (id) => {
       })
       .catch((error) => {
         console.log(error);
-      });
+      })
+      .finally(() => dispatch(allStore.setLoading(false)));
   };
 };
 

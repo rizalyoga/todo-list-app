@@ -7,17 +7,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .container-form {
-  margin: 10% -30%;
-  border-radius: 5px;
-  width: 150%;
+  /* border-radius: 5px; */
+  width: 50%;
   background-color: white;
 }
 
+.containerLogin,
+.containerRegister {
+  flex-direction: column;
+}
+
+.container-form-login,
+.container-form-register {
+  width: 30%;
+  background-color: white;
+}
+
+.login-btn,
+.register-btn {
+  border-radius: 0 !important;
+}
+
 Form {
-  padding: 20px;
+  padding: 5%;
 }
 
 .navigation {
@@ -26,4 +42,20 @@ Form {
   right: 0;
   position: absolute;
   font-size: large;
+}
+
+.spinner {
+  width: 1rem !important;
+  height: 1rem !important;
+  margin: 0 12px;
+}
+
+@media only screen and (max-width: 890px) {
+  .container-form {
+    width: 90%;
+  }
+
+  .container-form-login {
+    width: 90%;
+  }
 }
