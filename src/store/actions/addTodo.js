@@ -41,11 +41,13 @@ const addTodo = (data) => {
           type: ADD_TODO,
           payload: {
             loading: false,
-            data: error.data,
-            errorMessage: error.message,
+            data: error,
+            errorMessage: error,
           },
         });
-        console.log("hai", error);
+        if (error === undefined) {
+          swal("Set date minimal is tomorrow", { icon: "error", buttons: false, timer: 3000 });
+        }
       });
   };
 };

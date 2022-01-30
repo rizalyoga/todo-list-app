@@ -6,6 +6,7 @@ import "./form.css";
 import { updateTodo } from "../../../store/actions/updateTodo.js";
 import Navibar from "../Navbar";
 import allStore from "../../../store/actions/index.js";
+import setMinDate from "./date.js";
 
 const UpdateTodo = () => {
   let navigate = useNavigate();
@@ -25,12 +26,13 @@ const UpdateTodo = () => {
     setId(params.id);
   }, [params]);
 
+  //SET MIN DATE
+  useEffect(() => {
+    setMinDate();
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(id);
-    // console.log(title);
-    // console.log(description);
-    // console.log(due_date);
     dispatch(updateTodo({ id: id, title: title, description: description, due_date: due_date }));
   };
 
@@ -64,8 +66,8 @@ const UpdateTodo = () => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="due_date">
-                <Form.Label>Date</Form.Label>
-                <Form.Control type="date" name="due_date" placeholder="due_date" value={due_date} onChange={(event) => setdate(event.target.value)} required />
+                <Form.Label>Date ( Minimal to set date is tomorrow )</Form.Label>
+                <Form.Control id="datefield" type="date" name="due_date" placeholder="due_date" value={due_date} onChange={(event) => setdate(event.target.value)} required />
               </Form.Group>
               <Button variant="primary" onClick={() => navigate("/")}>
                 Cancel

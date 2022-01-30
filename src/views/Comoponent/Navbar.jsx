@@ -6,7 +6,7 @@ import logo from "../../assets/test.png";
 const NavigationBar = () => {
   const handleLogout = () => {
     localStorage.clear();
-    swal({ icon: "success", title: "Logout Success !!!", buttons: false });
+    swal("Logout Success !!!", { icon: "success", buttons: false });
     setTimeout(() => {
       window.location.reload();
     }, 1000);

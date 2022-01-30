@@ -12,13 +12,11 @@ export const Login = (payload) => {
       .then((response) => {
         // console.log(response.data);
         localStorage.setItem("token", response.data.token);
-        swal({ icon: "success", title: response.data.message });
-        // setTimeout(() => {
-        //   window.location.href = "/";
-        // }, 1000);
+        swal(`${response.data.message}`, { icon: "success" });
       })
       .catch((err) => {
         console.log(err.response.data.message);
+        swal(`${err.response.data.message}`, { icon: "error", buttons: false, timer: 4000 });
       })
       .finally(() => dispatch(allStore.setLoading(false)));
   };

@@ -38,6 +38,11 @@ export const updateTodo = (data) => {
             errorMessage: error,
           },
         });
+        if (error === undefined) {
+          swal(`Minimal date is tomorrow`, { icon: "error", buttons: false, timer: 3000 });
+        } else {
+          swal(`${error}`, { icon: error, buttons: false, timer: 3000 });
+        }
       })
       .finally(() => dispatch(allStore.setLoading(false)));
   };

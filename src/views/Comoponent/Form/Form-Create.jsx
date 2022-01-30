@@ -1,16 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./form.css";
 import addTodo from "../../../store/actions/addTodo.js";
 import Navibar from "../Navbar.jsx";
+import setMinDate from "./date.js";
+import swal from "sweetalert";
 
 const CreateTodo = () => {
   let navigate = useNavigate();
   const [title, settitle] = useState("");
   const [description, setdescription] = useState("");
   const [due_date, setdate] = useState("");
+
+  useEffect(() => {
+    setMinDate();
+  }, []);
 
   const dispatch = useDispatch();
   const handleSubmit = (event) => {
@@ -22,6 +28,7 @@ const CreateTodo = () => {
       setdescription("");
       setdate("");
     }, 1000);
+    swal("Please wait...", { icon: "warning", buttons: false });
   };
 
   return (
@@ -42,8 +49,8 @@ const CreateTodo = () => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="due_date">
-                <Form.Label>Date</Form.Label>
-                <Form.Control type="date" name="due_date" placeholder="due_date" value={due_date} onChange={(event) => setdate(event.target.value)} required />
+                <Form.Label>Date ( Minimal to set date is tomorrow )</Form.Label>
+                <Form.Control id="datefield" type="date" name="due_date" placeholder="due_date" value={due_date} onChange={(event) => setdate(event.target.value)} required />
               </Form.Group>
               <Button variant="primary" onClick={() => navigate("/")}>
                 Cancel

@@ -8,7 +8,7 @@ import check from "../../assets/check.png";
 import edit from "../../assets/edit.png";
 import addButton from "../../assets/plus.png";
 import Navbar from "../Comoponent/Navbar.jsx";
-import buttonOnScroll from "../../assets/addOnScroll.svg";
+// import buttonOnScroll from "../../assets/addOnScroll.svg";
 /* --------------------------------- Allert --------------------------------- */
 import swal from "sweetalert";
 /* --------------------------------- Actions -------------------------------- */
@@ -140,9 +140,9 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="stickyButton">
+        {/* <div className="stickyButton">
           <img src={buttonOnScroll} alt="sticky-button" onClick={() => navigate("/CreateForm")} />
-        </div>
+        </div> */}
       </div>
       {/* </Container> */}
     </>
