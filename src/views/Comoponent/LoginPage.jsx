@@ -38,7 +38,7 @@ const LoginPage = () => {
             </Link>
           </div>
           <div>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} className="glass">
               <Form.Group className="mb-3 " controlId="email">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} required />

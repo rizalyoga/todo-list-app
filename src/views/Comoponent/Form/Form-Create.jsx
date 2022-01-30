@@ -41,7 +41,7 @@ const CreateTodo = () => {
       <div className="containerCreate">
         <div className="container-form">
           <div>
-            <Form onSubmit={(event) => handleSubmit(event)}>
+            <Form onSubmit={(event) => handleSubmit(event)} className="glass">
               <Form.Group className="mb-3 " controlId="title">
                 <Form.Label>Title Todo</Form.Label>
                 <Form.Control type="text" name="title" placeholder="Enter title" value={title} onChange={(event) => settitle(event.target.value)} autoComplete="off" required />

@@ -28,7 +28,7 @@ const RegisterPage = () => {
             </Link>
           </div>
           <div>
-            <Form onSubmit={(event) => handleSubmit(event)}>
+            <Form onSubmit={(event) => handleSubmit(event)} className="glass">
               <Form.Group className="mb-3 " controlId="username">
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text" name="username" placeholder="Enter Username" value={username} onChange={(event) => setUsername(event.target.value)} required />

@@ -28,7 +28,16 @@
   margin: auto;
   border-radius: 5px;
   width: 100%;
-  background-color: white;
+}
+
+.glass {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.62) !important;
+  border-radius: 0px !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(17.9px) !important;
+  -webkit-backdrop-filter: blur(17.9px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.26) !important;
 }
 
 Form {
