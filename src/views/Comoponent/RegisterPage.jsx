@@ -20,7 +20,6 @@ const RegisterPage = () => {
   return (
     <>
       <div className="containerRegister">
-        <h1 className="text-center">Register</h1>
         <div className="container-form-register">
           <div className="navigation">
             <Link className=" login text-decoration-none text-light px-3 pt-2 fw-bold" to="/login">
@@ -29,6 +28,7 @@ const RegisterPage = () => {
           </div>
           <div>
             <Form onSubmit={(event) => handleSubmit(event)} className="glass">
+              <h1 className="text-center text-dark">Register</h1>
               <Form.Group className="mb-3 " controlId="username">
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text" name="username" placeholder="Enter Username" value={username} onChange={(event) => setUsername(event.target.value)} required />

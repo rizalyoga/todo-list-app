@@ -30,7 +30,6 @@ const LoginPage = () => {
   return (
     <>
       <div className="containerLogin">
-        <h1 className="text-center pb-2">Please Login</h1>
         <div className="container-form-login">
           <div className="navigation">
             <Link className="text-decoration-none text-light px-3 pt-2 fw-bold" to="/register">
@@ -39,6 +38,7 @@ const LoginPage = () => {
           </div>
           <div>
             <Form onSubmit={handleSubmit} className="glass">
+              <h1 className="text-center pb-2 text-dark">Please Login</h1>
               <Form.Group className="mb-3 " controlId="email">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} required />
