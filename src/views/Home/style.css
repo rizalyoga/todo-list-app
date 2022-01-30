@@ -124,12 +124,13 @@ body {
 
 .desc {
   width: 50%;
-  padding-right: 30px;
+  /* padding-right: 30px; */
   padding-left: 10px;
   padding-top: 10px;
 }
 
 .desc p {
+  text-align: center;
   font-size: 1.2rem;
   overflow: hidden;
 }

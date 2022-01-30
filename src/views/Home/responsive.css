@@ -1,4 +1,16 @@
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 885px) {
+  .button-act {
+    margin-right: 3%;
+  }
+
+  .button-act img {
+    width: 40%;
+    cursor: pointer;
+    padding-right: 5%;
+  }
+}
+
+@media screen and (max-width: 800px) {
   .col-container {
     flex-direction: column;
     width: 100%;
@@ -35,8 +47,12 @@
     height: 65%;
   }
 
+  .button-act {
+    margin-right: 3%;
+  }
+
   .button-act img {
-    width: 30%;
+    width: 40%;
     cursor: pointer;
     padding-right: 5%;
   }
@@ -65,9 +81,13 @@
     width: 100%;
   }
 
+  .button-act {
+    margin-right: 5%;
+  }
+
   .button-act img {
-    width: 40%;
+    width: 45%;
     cursor: pointer;
-    padding-right: 10%;
+    padding: 0;
   }
 }
