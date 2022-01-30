@@ -5,7 +5,6 @@ export const DetailTodo = (id) => {
   const token = localStorage.getItem("token");
 
   return (dispatch) => {
-    console.log(id);
     dispatch(allStore.setLoading(true));
     axios
       .get(`https://peaceful-citadel-71310.herokuapp.com/todo/${id}`, {

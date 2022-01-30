@@ -12,7 +12,6 @@ export const fetchListTodo = () => {
         },
       })
       .then(({ data }) => {
-        console.log(data.data);
         dispatch(setListTodo(data.data));
       })
       .catch((error) => {

@@ -5,11 +5,20 @@ import logo from "../../assets/test.png";
 
 const NavigationBar = () => {
   const handleLogout = () => {
-    localStorage.clear();
-    swal("Logout Success !!!", { icon: "success", buttons: false });
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    swal({
+      title: "Are you sure to logout?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        localStorage.clear();
+        swal("Logout Success !!!", { icon: "success", buttons: false });
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }
+    });
   };
 
   return (
@@ -24,13 +33,13 @@ const NavigationBar = () => {
             </div>
             <div className="menu d-flex justify-content-center align-items-center">
               <Nav className="me-auto ">
-                <Link className="text-decoration-none text-light px-2" to="/">
+                <Link className="menu-nav text-decoration-none text-light px-2" to="/">
                   Home
                 </Link>
-                <Link className="text-decoration-none text-light px-2" to="/listDone">
+                <Link className="menu-nav text-decoration-none text-light px-2" to="/listDone">
                   List Done
                 </Link>
-                <Link className="text-decoration-none text-light px-2" to="#" onClick={() => handleLogout()}>
+                <Link className="menu-nav text-decoration-none text-light px-2" to="#" onClick={() => handleLogout()}>
                   Logout
                 </Link>
               </Nav>

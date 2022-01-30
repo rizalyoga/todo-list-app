@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./FrontPage.css";
 import allStore from "../../store/actions";
 import Home from "../Home/home";
-import background from "../../assets/work.jpg";
+// import background from "../../assets/work.jpg";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -18,9 +18,8 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = { email: email, password: password };
-    console.log(typeof payload);
-    console.log(payload);
+    // const payload = { email: email, password: password };
+    // console.log(payload);
     dispatch(allStore.login({ email, password }));
   };
 

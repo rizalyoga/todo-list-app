@@ -23,7 +23,7 @@ const RegisterPage = () => {
         <h1 className="text-center">Register</h1>
         <div className="container-form-register">
           <div className="navigation">
-            <Link className="login text-decoration-none text-light px-3 pt-2 fw-bold" to="/login">
+            <Link className=" login text-decoration-none text-light px-3 pt-2 fw-bold" to="/login">
               Login
             </Link>
           </div>
