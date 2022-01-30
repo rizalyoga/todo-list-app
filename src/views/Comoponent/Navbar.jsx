@@ -24,18 +24,16 @@ const NavigationBar = () => {
             </div>
             <div className="menu d-flex justify-content-center align-items-center">
               <Nav className="me-auto ">
-                <Link className="text-decoration-none text-light px-3" to="/">
+                <Link className="text-decoration-none text-light px-2" to="/">
                   Home
                 </Link>
-                <Link className="text-decoration-none text-light" to="/listDone">
+                <Link className="text-decoration-none text-light px-2" to="/listDone">
                   List Done
                 </Link>
-              </Nav>
-              <div className="logout" style={{ float: "right", cursor: "pointer" }} onClick={() => handleLogout()}>
-                <p className="text-white px-3" style={{ marginTop: "16px" }}>
+                <Link className="text-decoration-none text-light px-2" to="#" onClick={() => handleLogout()}>
                   Logout
-                </p>
-              </div>
+                </Link>
+              </Nav>
             </div>
           </div>
         </Container>

@@ -31,6 +31,10 @@ const CreateTodo = () => {
     swal("Please wait...", { icon: "warning", buttons: false });
   };
 
+  if (!localStorage.token) {
+    return (window.location.href = "/");
+  }
+
   return (
     <>
       <Navibar />

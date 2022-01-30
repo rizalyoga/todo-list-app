@@ -96,7 +96,7 @@ const ListDone = () => {
       <Navbar />
       {/* <Container> */}
       <div className="welcome">
-        <p className="text-center">Silahkan Tekan Tombol PLUS (+) untuk Menambahkan Todo</p>
+        <p className="text-center">Please Press the PLUS (+) Button to Add Todo</p>
 
         <div className="addButton">
           <img src={addButton} alt="Add-Todo-Button" id="addButton" onClick={() => navigate("/CreateForm")} />

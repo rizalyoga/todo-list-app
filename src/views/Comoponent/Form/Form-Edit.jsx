@@ -48,6 +48,10 @@ const UpdateTodo = () => {
     }
   }, [detailTodos]);
 
+  if (!localStorage.token) {
+    return (window.location.href = "/");
+  }
+
   return (
     <>
       <Navibar />

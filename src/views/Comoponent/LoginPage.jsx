@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./FrontPage.css";
 import allStore from "../../store/actions";
 import Home from "../Home/home";
+import background from "../../assets/work.jpg";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -33,11 +34,8 @@ const LoginPage = () => {
         <h1 className="text-center pb-2">Please Login</h1>
         <div className="container-form-login">
           <div className="navigation">
-            <Link className="text-decoration-none text-light px-3 pt-2" to="/register">
+            <Link className="text-decoration-none text-light px-3 pt-2 fw-bold" to="/register">
               Register
-            </Link>
-            <Link className="text-decoration-none text-light px-3 pt-2" to="/login">
-              Login
             </Link>
           </div>
           <div>
