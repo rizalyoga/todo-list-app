@@ -45,7 +45,7 @@ const CreateTodo = () => {
 
               <Form.Group className="mb-3 " controlId="description">
                 <Form.Label>Description</Form.Label>
-                <Form.Control type="text" as="textarea" name="description" placeholder="Enter description" value={description} onChange={(event) => setdescription(event.target.value)} required />
+                <Form.Control type="text" as="textarea" rows="5" name="description" placeholder="Enter description" value={description} onChange={(event) => setdescription(event.target.value)} required />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="due_date">

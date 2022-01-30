@@ -114,9 +114,9 @@ const ListDone = () => {
                     <div className="detailTodo pt-3" id={`listId${index}`} key={index}>
                       <div className="desc">
                         <h5 className="fw-bold">{el.title}</h5>
-                        <div className="container-list d-flex ">
+                        <div className="container-list">
                           <div className="list">
-                            <p className="lh-1">{el.description}</p>
+                            <p className="lh-2">{el.description}</p>
                             <p className="lh-1">{moment(el.due_date, "YYYY-MM-DD hh:mm:ss").format("DD/MM/YYYY")}</p>
                           </div>
                           <div className="button-act d-flex justify-content-center align-item-center">
