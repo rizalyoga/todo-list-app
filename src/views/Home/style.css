@@ -54,7 +54,7 @@ body {
 .welcome {
   text-align: center;
   background-color: aliceblue;
-  padding: 20px 0px;
+  padding: 60px 0px 20px 0px;
   box-sizing: border-box;
   overflow: hidden;
   width: 100%;

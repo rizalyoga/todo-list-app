@@ -23,7 +23,7 @@ const NavigationBar = () => {
 
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" className="position-fixed" style={{ zIndex: "99" }}>
         <Container>
           <div className="d-flex justify-content-between">
             <div className="logo d-flex justify-content-center align-items-center">
