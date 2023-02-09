@@ -12,6 +12,8 @@
 <tr>
 <td>
 To Do List Web App is a personal web app that allows users to make scheduling notes about what things will be done
+<br/>
+Back-end : <a target="_blank">https://github.com/lukmanbayhaqi/todo-server</a> 
 </td>
 </tr>
 </table>
@@ -19,6 +21,14 @@ To Do List Web App is a personal web app that allows users to make scheduling no
 ## Demo
 
 Here is a working live demo : https://todo-list-app-rizalyoga.vercel.app
+
+## 🔮 Features
+
+- Register & login account
+- Create todo list
+- Edit todo list
+- Delete todo list
+- logout account
 
 ## Site
 
